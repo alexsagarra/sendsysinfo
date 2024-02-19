@@ -9,11 +9,22 @@ from uuid import getnode as get_mac
 from pprint import pprint as pp
 from dotenv import load_dotenv
 import time
+import sys
 
 load_dotenv()
 WEBHOOK = os.getenv("WEBHOOK", "value does not exist")
 
 requests.packages.urllib3.disable_warnings()
+
+
+def get_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    # print(s.getsockname()[0])
+    ipaddr = s.getsockname()[0]
+    s.close()
+
+    return ipaddr
 
 
 def send_webhook(jsondata: dict):
@@ -61,12 +72,12 @@ def try_to_send_get_request(mehtod, url, payload=None):
         if counter == maxtry:
             maxtry = maxtry * 2
         try:
-            print(f"Counter = {counter}")
+            # print(f"Counter = {counter}")
             response = requests.request(
                 mehtod, url=url, data=payload, timeout=10, verify=False
             )
             if response.status_code == 200:
-                print("get request 200")
+                # print("get request 200")
                 break
 
         except requests.exceptions.HTTPError as errh:
@@ -104,7 +115,7 @@ def sysinfo():
     sysinfodata = {}
     sysinfodata["hostname"] = platform.node()
     sysinfodata["net-mac"] = get_mac()
-    sysinfodata["net-ip"] = socket.gethostbyname(platform.node())
+    sysinfodata["net-ip"] = get_ip()
     sysinfodata["net-public_ip"] = get_public_ip_address()
     # sysinfodata["machine"] = platform.machine()
     sysinfodata["version"] = platform.version()
@@ -127,7 +138,8 @@ def get_public_ip_address():
 def main():
     """workflow"""
     sysinfodata = sysinfo()
-    # pp(sysinfodata)
+    pp(sysinfodata)
+    sys.exit(0)
     send_webhook(sysinfodata)
 
 
