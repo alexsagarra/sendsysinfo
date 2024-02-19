@@ -5,10 +5,8 @@
 # Special folders & files
 ##########################################
 .gitlab-ci.yml
-# backend.sh
-# frontend.sh
-
 BACKUP/
+log.*
 
 ##########################################
 # Certificate Files
@@ -26,7 +24,7 @@ certs/*.pem
 env/
 venv/
 ENV/
-.env*
+
 
 ##########################################
 # JS
