@@ -138,8 +138,7 @@ def get_public_ip_address():
 def main():
     """workflow"""
     sysinfodata = sysinfo()
-    pp(sysinfodata)
-    sys.exit(0)
+    # pp(sysinfodata)
     send_webhook(sysinfodata)
 
 
