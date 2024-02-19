@@ -36,6 +36,14 @@ python main.py
 
 ## CRON
 
+crontab -e
+@reboot sleep 10 && /home/zebbra/sendsysinfo/sys_send.sh >> /home/zebbra/sendsysinfo/log.txt
+@reboot sleep 1 && /home/zebbra/sendsysinfo/sys_send.sh >> /home/zebbra/sendsysinfo/log.txt
+
+@reboot /root/backup.sh
+sudo systemctl status cron.service
+sudo systemctl enable cron.service
+
 ## BANNER
 
 ```
