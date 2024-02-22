@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -e
-source /home/zebbra/sendsysinfo/.venv/bin/activate
-python -u /home/zebbra/sendsysinfo/main.py
+source /home/$USER/sendsysinfo/.venv/bin/activate
+python -u /home/$USER/sendsysinfo/main.py
