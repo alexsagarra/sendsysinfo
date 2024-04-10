@@ -45,24 +45,27 @@ sudo systemctl status cron.service
 sudo systemctl enable cron.service
 
 ## BANNER
+https://manytools.org/hacker-tools/ascii-banner/
 
 ```
 sudo nano /etc/motd
 ```
 
-```d88P 888~~  888~~\  888~~\  888~-_        e            888~-_   888
-  d88P  888___ 888   | 888   | 888   \      d8b           888   \  888
- d88P   888    888 _/  888 _/  888    |    /Y88b          888    | 888
-d88P    888    888  \  888  \  888   /    /  Y88b         888   /  888
-d88P     888    888   | 888   | 888_-~    /____Y88b        888_-~   888
-d88P____ 888___ 888__/  888__/  888 ~-_  /      Y88b       888      888
-
+```
+ #     # ####### #           #####   #####     #    #     # #     # ####### ######  
+ ##   ## #       #          #     # #     #   # #   ##    # ##    # #       #     # 
+ # # # # #       #          #       #        #   #  # #   # # #   # #       #     # 
+ #  #  # #####   #           #####  #       #     # #  #  # #  #  # #####   ######  
+ #     # #       #                # #       ####### #   # # #   # # #       #   #   
+ #     # #       #          #     # #     # #     # #    ## #    ## #       #    #  
+ #     # ####### #######     #####   #####  #     # #     # #     # ####### #     # 
+                                                                                    
 ```
 
 ## DOCKER
 
 ```
-curl -fsSL test.docker.com -o get-docker.sh && sh get-docker.sh
+curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
 sudo usermod -aG docker ${USER}
 groups ${USER}
 sudo reboot now
